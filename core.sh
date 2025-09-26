@@ -1,6 +1,6 @@
+# CONFIG
 ZSHRC_FILE="$HOME/.zshrc"
 
-# COLORS
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[0;33m'
@@ -10,47 +10,49 @@ CYAN='\033[0;36m'
 WHITE='\033[0;37m'
 NC='\033[0m'
 
-echo "\n${YELLOW}Setting up this new computer!!${NC}"
+echo "\n--------------------------------"
+echo "\n${YELLOW}Software installs!${NC}\n"
 
 # Install ohmyzsh
-echo "\n- ${GREEN}ohmyzsh${NC}"
+echo "\n- ${CYAN}ohmyzsh${NC}"
 if [ -d "$HOME/.oh-my-zsh" ]; then
-    echo "  Already installed!"
+    echo "  ${GREEN}Already installed!${NC}"
 else
   echo "  ${YELLOW}Installing ohmyzsh...${NC}"
   sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
+
 # Install NVM
-echo "\n- ${GREEN}NVM${NC}"
+echo "\n- ${CYAN}NVM${NC}"
 if [ -d "${HOME}/.nvm/.git" ]; then
-    echo "  Already installed!"
+    echo "  ${GREEN}Already installed!${NC}"
 else
     echo "  ${YELLOW}Installing NVM...${NC}"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 fi
 
 # Install pnp
-echo "\n- ${GREEN}pnpm${NC}"
+echo "\n- ${CYAN}pnpm${NC}"
 if command -v pnpm &> /dev/null; then
-    echo "  Already installed!"
+    echo "  ${GREEN}Already installed!${NC}"
 else
     echo "  ${YELLOW}Installing pnpm...${NC}"
     curl -fsSL https://get.pnpm.io/install.sh | sh -
 fi
 
 # Installing homebrew
-echo "\n- ${GREEN}homebrew${NC}"
+echo "\n- ${CYAN}homebrew${NC}"
 if command -v brew &> /dev/null; then
-    echo "  Already installed!"
+    echo "  ${GREEN}Already installed!${NC}"
 else
     echo "  ${YELLOW}Installing homebrew...${NC}"
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # Installing bat
-echo "\n- ${GREEN}bat${NC}"
+echo "\n- ${CYAN}bat${NC}"
 if command -v bat &> /dev/null; then
-    echo "  Already installed!"
+    echo "  ${GREEN}Already installed!${NC}"
 else
   # Installing bat
   echo "  ${YELLOW}Installing bat through homebrew...${NC}"
@@ -58,9 +60,9 @@ else
 fi
 
 # Installing fzf
-echo "\n- ${GREEN}fzf${NC}"
+echo "\n- ${CYAN}fzf${NC}"
 if command -v fzf &> /dev/null; then
-    echo "  Already installed!"
+    echo "  ${GREEN}Already installed!${NC}"
 else
   # Installing fzf
   echo "  ${YELLOW}Installing fzf through homebrew...${NC}"
@@ -77,9 +79,9 @@ else
 fi
 
 # Installing diff-so-fancy
-echo "\n- ${GREEN}diff-so-fancy${NC}"
+echo "\n- ${CYAN}diff-so-fancy${NC}"
 if command -v diff-so-fancy &> /dev/null; then
-    echo "  Already installed..."
+    echo "  ${GREEN}Already installed!${NC}"
 else
   # Installing diff-so-fancy
   echo "  ${YELLOW}Installing diff-so-fancy through homebrew...${NC}"
@@ -89,12 +91,12 @@ else
   git config --global interactive.diffFilter "diff-so-fancy --patch"
 fi
 
-echo "\n${YELLOW}Updating shell...${NC}"
+echo "\n${YELLOW}Sourcing .zshrc...${NC}"
 source ~/.zshrc
 
-echo "\n${GREEN}Git${NC}"
+echo "\n${CYAN}git${NC}"
 if [ -d "$HOME/Projects" ]; then
-  echo "  Git folder already exists!"
+  echo "  ${GREEN}Git folder already exists!${NC}"
 else
   echo "  ${YELLOW}Creating ~/Projects folder...${NC}"
   mkdir -p "$HOME/Projects"
@@ -112,5 +114,18 @@ git config --global alias.df "diff"
 git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 git config --global alias.ll "log --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
-echo "\n--------------------------------"
-echo "\n${GREEN}Done!${NC}\nEnjoy your new setup!\n"
+echo "\n${GREEN}Software installs done!${NC}\n"
+
+echo "--------------------------------\n"
+
+echo "${YELLOW}Do you want to update OSX software now?:${NC}"
+select yn in "Yes" "No"; do
+  case $yn in
+    Yes ) break;;
+    No ) exit;;
+  esac
+done
+
+# Continue if user wants to update OSX software
+echo "\n${CYAN}Updating OSX software...${NC}"
+softwareupdate -i -a
