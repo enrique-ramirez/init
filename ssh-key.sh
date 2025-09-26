@@ -14,11 +14,12 @@ echo "\n${YELLOW}Generating SSH key...${NC}"
 if [ -e "$SSH_CONFIG_FILE" ]; then
   echo "${CYAN}$SSH_CONFIG_FILE${NC} exists."
 else
-  echo "${CYAN}$SSH_CONFIG_FILE${NC} does not exist."
+  echo "${CYAN}$SSH_CONFIG_FILE${NC} does not exist, creating it..."
   touch ${HOME}/.ssh/config
 fi
 
 # TODO: Paste SSH_CONFIG_FILE_CONTENTS into ${HOME}/.ssh/config SAFELY
-ssh-add --apple-use-keychain $SSH_ID_FILE_PATH
+# ssh-add --apple-use-keychain $SSH_ID_FILE_PATH
 
 pbcopy < ${SSH_ID_FILE_PATH}.pub
+echo "\n${GREEN}$SSH_ID_FILE_PATH.pub file copied to clipboard! Paste it into your GitHub account!${NC}"
