@@ -17,5 +17,3 @@ I'd **LOVE** to automate this somehow, but I feel icky with some of the alternat
 * [Ghostty](https://ghostty.org/download)
 * [Spotify](https://www.spotify.com/mx/download/mac/)
 * [IINA](https://iina.io/)
-
-Don't forget to download XCode from the App store!
