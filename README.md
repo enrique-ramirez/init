@@ -1,2 +1,2 @@
-# init-setup
-Init setup shell script for new computers
+# @enrique-ramirez/init
+Init setup shell scripts for new computers!
