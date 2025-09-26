@@ -7,7 +7,7 @@ Host github.com
   IdentityFile ${SSH_ID_FILE_PATH}
 "
 echo "\n${YELLOW}Generating SSH key...${NC}"
-# ssh-keygen -t rsa -b 4096 -C "hello@enrique-ramirez.com"
+# ssh-keygen -t rsa -b 4096 -C "$GIT_USER_EMAIL"
 # eval "$(ssh-agent -s)"
 
 # Create ${HOME}/.ssh/config file if it doesn't exist

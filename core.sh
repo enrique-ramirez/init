@@ -93,8 +93,8 @@ else
 fi
 
 echo "  \n${YELLOW}Configuring git...${NC}"
-git config --global user.name "Enrique Ramírez"
-git config --global user.email "hello@enriqueramirez.com"
+git config --global user.name "$GIT_USER_NAME"
+git config --global user.email "$GIT_USER_EMAIL"
 git config --global core.editor "cursor --wait"
 git config --global alias.co "checkout"
 git config --global alias.br "branch"

@@ -3,6 +3,10 @@ ZSHRC_FILE="$HOME/.zshrc"
 SSH_CONFIG_FILE="${HOME}/.ssh/config"
 SSH_ID_FILE_PATH="${HOME}/.ssh/id_ed25519"
 
+# CONFIGS
+GIT_USER_NAME="Enrique Ramírez"
+GIT_USER_EMAIL="hello@enriqueramirez.com"
+
 # COLORS
 RED='\033[0;31m'
 GREEN='\033[0;32m'
